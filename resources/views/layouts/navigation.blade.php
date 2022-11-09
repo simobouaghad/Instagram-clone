@@ -22,8 +22,8 @@
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="shrink-0 flex items-center">
-                    <a href="/profile/{{ Auth::user()->id }}">
+                <div class="shrink-0 flex items-center" >
+                    <a href="/profile/{{ Auth::user()->id }}" style="text-decoration: none">
                         <div class="pl-3">Instagram Clone</div>
                     </a>
 
