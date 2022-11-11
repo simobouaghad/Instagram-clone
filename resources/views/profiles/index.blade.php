@@ -11,6 +11,7 @@
                     <h1 style="font-size: 25px;">{{ $user->name }}</h1>
                     <a href="/p/create" style="margin-left: 250px; color: blue;">New Post</a>
                 </div>
+                <a href="/profile/{{ $user->id }}/edit" style="margin-left: 10px;">Edit profile</a>
                 <div style="display: flex">
                     <div style="padding-right: 30px;"><strong>{{ $user->posts->count()}} </strong>posts</div>
                     <div style="padding-right: 30px;"><strong>200k </strong>followers</div>
@@ -24,7 +25,9 @@
         <div style="display:grid; grid-template-columns: repeat(3, 1fr);">
             @foreach ($user->posts as $post)
                 <div style="margin-bottom: 10px;">
-                    <img src="/storage/{{ $post->image }}" style="width: 95%;">
+                    <a href="/p/{{ $post->id }}">
+                        <img src="/storage/{{ $post->image }}" style="width: 95%;">
+                    </a>
                 </div>
             @endforeach
         </div>
