@@ -4,14 +4,23 @@
     <div class="container" style="width: 70%;">
         <div class="row" style="display: flex;">
             <div style="display: flex; justify-content: center; padding: 10px; width: 35%;">
-                <img src="/imgs/insta.png" style="width: 60%; border-radius: 50%;">
+                <img src="{{$user->profile->profileImage()}}" style="width: 60%; border-radius: 50%;">
             </div>
             <div style="padding: 21px; width: 65%;">
-                <div style="display: flex; align-items: center;">
-                    <h1 style="font-size: 25px;">{{ $user->name }}</h1>
-                    <a href="/p/create" style="margin-left: 250px; color: blue;">New Post</a>
+                <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                    <div class="d-flex align-items-center pb-3">
+                        <div style="font-size: 25px;">{{ $user->name }}</div>
+
+                        <button class="btn btn-primary ml-4">Follow</button>
+                    </div>
+
+                    @can('update', $user->profile)
+                        <a href="/p/create" style="margin-left: 250px; color: blue;">New Post</a>
+                    @endcan
                 </div>
-                <a href="/profile/{{ $user->id }}/edit" style="margin-left: 10px;">Edit profile</a>
+                @can('update', $user->profile)
+                    <a href="/profile/{{ $user->id }}/edit" style="margin-left: 10px;">Edit profile</a>
+                @endcan
                 <div style="display: flex">
                     <div style="padding-right: 30px;"><strong>{{ $user->posts->count()}} </strong>posts</div>
                     <div style="padding-right: 30px;"><strong>200k </strong>followers</div>

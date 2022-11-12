@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Profile;
 
 class User extends Authenticatable
 {
@@ -42,6 +43,22 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::created(function ($user) {
+            $profile = new Profile();
+            $profile->user_id = $user->id;
+            $profile->title = $user->username;
+            $profile->save();
+
+            // $user->profile()->create([
+            //     'title' => $user->username,
+            // ]);
+        });
+    }
 
     public function posts()
     {

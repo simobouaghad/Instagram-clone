@@ -20,6 +20,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// post model
 Route::get('/p/create', [PostsController::class, 'create']);
 Route::get('/p', [PostsController::class, 'store']);
 Route::get('/p/{post}', [PostsController::class, 'show']);
@@ -27,6 +28,7 @@ Route::get('/p/{post}', [PostsController::class, 'show']);
 
 Auth::routes();
 
+// profile model
 Route::get('/profile/{user}', [ProfilesController::class, 'index'])->name('profile.index');
 Route::get('/profile/{user}/edit', [ProfilesController::class, 'edit'])->name('profile.edit');
 Route::patch('/profile/{user}', [ProfilesController::class, 'update'])->name('profile.update');
