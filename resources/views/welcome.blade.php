@@ -37,7 +37,8 @@
             @endif
 
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-
+                <h1>Home page</h1>
+                <h5>hey i hope you're doing good, and welcome back to instagram clone</h5>
             </div>
         </div>
     </body>
